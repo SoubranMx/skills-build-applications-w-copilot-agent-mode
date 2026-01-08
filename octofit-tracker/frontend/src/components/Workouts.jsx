@@ -5,7 +5,7 @@ const Workouts = () => {
   const endpoint = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`;
 
   useEffect(() => {
-    console.log('Fetching from:', endpoint);
+    console.log('Fetching from: ', endpoint);
     fetch(endpoint)
       .then(res => res.json())
       .then(data => {
