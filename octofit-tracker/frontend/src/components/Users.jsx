@@ -29,18 +29,18 @@ const Users = () => {
                 <thead className="table-light">
                   <tr>
                     <th>#</th>
-                    <th>Username</th>
+                    <th>Name</th>
                     <th>Email</th>
-                    <th>Joined</th>
+                    <th>Team</th>
                   </tr>
                 </thead>
                 <tbody>
                   {users.map((user, idx) => (
                     <tr key={user.id || idx}>
                       <td>{idx + 1}</td>
-                      <td>{user.username || user.name || '-'}</td>
+                      <td>{user.name || user.username || '-'}</td>
                       <td>{user.email || '-'}</td>
-                      <td>{user.joined || user.date_joined || '-'}</td>
+                      <td>{user.team || '-'}</td>
                     </tr>
                   ))}
                 </tbody>

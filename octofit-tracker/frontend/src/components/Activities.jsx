@@ -29,18 +29,18 @@ const Activities = () => {
                 <thead className="table-light">
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Date</th>
+                    <th>User Email</th>
+                    <th>Activity</th>
+                    <th>Duration (min)</th>
                   </tr>
                 </thead>
                 <tbody>
                   {activities.map((activity, idx) => (
                     <tr key={activity.id || idx}>
                       <td>{idx + 1}</td>
-                      <td>{activity.name || '-'}</td>
-                      <td>{activity.type || '-'}</td>
-                      <td>{activity.date || '-'}</td>
+                      <td>{activity.user_email || '-'}</td>
+                      <td>{activity.activity || '-'}</td>
+                      <td>{activity.duration || '-'}</td>
                     </tr>
                   ))}
                 </tbody>

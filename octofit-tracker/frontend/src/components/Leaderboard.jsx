@@ -29,16 +29,16 @@ const Leaderboard = () => {
                 <thead className="table-light">
                   <tr>
                     <th>#</th>
-                    <th>Name</th>
-                    <th>Score</th>
+                    <th>Team</th>
+                    <th>Points</th>
                   </tr>
                 </thead>
                 <tbody>
                   {leaders.map((leader, idx) => (
                     <tr key={leader.id || idx}>
                       <td>{idx + 1}</td>
-                      <td>{leader.name || leader.username || leader.user || '-'}</td>
-                      <td>{leader.score || leader.points || '-'}</td>
+                      <td>{leader.team || '-'}</td>
+                      <td>{leader.points || '-'}</td>
                     </tr>
                   ))}
                 </tbody>

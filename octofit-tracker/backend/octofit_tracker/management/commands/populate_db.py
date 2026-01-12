@@ -1,7 +1,5 @@
 from django.core.management.base import BaseCommand
-from django.conf import settings
-from djongo import models
-from pymongo import MongoClient
+from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
 
 # Sample data for superheroes and teams
 USERS = [
@@ -33,24 +31,27 @@ class Command(BaseCommand):
     help = 'Populate the octofit_db database with test data'
 
     def handle(self, *args, **options):
-        client = MongoClient(settings.DATABASES['default']['CLIENT']['host'])
-        db = client[settings.DATABASES['default']['NAME']]
+        # Clear existing data
+        User.objects.all().delete()
+        Team.objects.all().delete()
+        Activity.objects.all().delete()
+        Leaderboard.objects.all().delete()
+        Workout.objects.all().delete()
 
-        # Drop collections if they exist
-        db.users.drop()
-        db.teams.drop()
-        db.activities.drop()
-        db.leaderboard.drop()
-        db.workouts.drop()
-
-        # Insert test data
-        db.users.insert_many(USERS)
-        db.teams.insert_many(TEAMS)
-        db.activities.insert_many(ACTIVITIES)
-        db.leaderboard.insert_many(LEADERBOARD)
-        db.workouts.insert_many(WORKOUTS)
-
-        # Ensure unique index on email
-        db.users.create_index([("email", 1)], unique=True)
+        # Insert test data using Django ORM
+        for user_data in USERS:
+            User.objects.create(**user_data)
+        
+        for team_data in TEAMS:
+            Team.objects.create(**team_data)
+        
+        for activity_data in ACTIVITIES:
+            Activity.objects.create(**activity_data)
+        
+        for leaderboard_data in LEADERBOARD:
+            Leaderboard.objects.create(**leaderboard_data)
+        
+        for workout_data in WORKOUTS:
+            Workout.objects.create(**workout_data)
 
         self.stdout.write(self.style.SUCCESS('octofit_db database populated with test data.'))

@@ -30,9 +30,7 @@ const Workouts = () => {
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Type</th>
-                    <th>Duration</th>
-                    <th>Calories</th>
+                    <th>Suggested For</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,9 +38,7 @@ const Workouts = () => {
                     <tr key={workout.id || idx}>
                       <td>{idx + 1}</td>
                       <td>{workout.name || '-'}</td>
-                      <td>{workout.type || '-'}</td>
-                      <td>{workout.duration || '-'}</td>
-                      <td>{workout.calories || '-'}</td>
+                      <td>{workout.suggested_for || '-'}</td>
                     </tr>
                   ))}
                 </tbody>

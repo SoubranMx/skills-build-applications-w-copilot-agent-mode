@@ -30,7 +30,7 @@ const Teams = () => {
                   <tr>
                     <th>#</th>
                     <th>Name</th>
-                    <th>Members</th>
+                    <th>Description</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,7 +38,7 @@ const Teams = () => {
                     <tr key={team.id || idx}>
                       <td>{idx + 1}</td>
                       <td>{team.name || '-'}</td>
-                      <td>{Array.isArray(team.members) ? team.members.length : '-'}</td>
+                      <td>{team.description || '-'}</td>
                     </tr>
                   ))}
                 </tbody>
