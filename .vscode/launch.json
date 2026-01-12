@@ -18,16 +18,31 @@
     },
     {
       "name": "Launch React Frontend",
-      "type": "node",
+      "type": "node-terminal",
       "request": "launch",
-      "program": "${workspaceFolder}/octofit-tracker/frontend/node_modules/react-scripts/scripts/start.js",
       "cwd": "${workspaceFolder}/octofit-tracker/frontend",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["start"],
-      "port": 3000,
+      "command": "npm run dev",
       "env": {
-        "REACT_APP_CODESPACE_NAME": "${env:CODESPACE_NAME}"
+        "VITE_CODESPACE_NAME": "${env:CODESPACE_NAME}"
       }
+    },
+    {
+      "name": "Launch Full Stack",
+      "preLaunchTask": "Start Django Backend",
+      "type": "node-terminal",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/octofit-tracker/frontend",
+      "command": "npm run dev",
+      "env": {
+        "VITE_CODESPACE_NAME": "${env:CODESPACE_NAME}"
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Full Stack: Python Django + React",
+      "configurations": ["Launch Django Backend", "Launch React Frontend"],
+      "stopAll": true
     }
   ]
 }
